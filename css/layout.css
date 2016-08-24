@@ -1,0 +1,254 @@
+
+    .clearfix { clear: both; }
+    .mfsTitle {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+    }
+    .mfsTopNavIcon {font-size: 24px; margin-top: -8px; margin-bottom: -6px;}
+    .mfsTopnav {
+        text-align: right;
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+    }
+    
+    .mfsTitle2 {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #000;
+        padding: 20px;
+    }
+	
+	.mfsDashTitle { font-weight:bold; font-size:18px; }
+    
+    .mfsTopnav2 {
+        text-align: right;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #000;
+        padding: 20px;
+    }
+    
+    .mfsLeftnav {
+        background-color: #eee;
+        padding: 0px;
+        height: 100%;
+    }
+    
+    .mfsLeftnav div {
+        margin: 10px 0;
+        text-align: center;
+        font-size: 10px;
+        padding: 10px 0;
+    }
+    
+    .mfsLeftnav i {
+        font-size: 30px;
+    }
+    
+    .mfsBodycontainer {
+        /*padding: 10px;*/
+        height: calc(100vh - 120px);
+    }
+    
+    .mfsBody {
+        background-color: #fff;
+        height: 100%;
+		padding:10px 10px 0 10px;
+    }
+    
+    .mfsNavLeftDiv {
+        background-color: #eee;
+    }
+    
+    .mfsNavLeftDivSELECTED {
+        background-color: #fff;
+    }
+    
+    .displayNone {
+        display: none;
+    }
+    
+    .contentBox {
+        / background-color: #fff;
+        display: block;
+        z-index: 50;
+        overflow-y: auto;
+    }
+    
+    .contentBox iframe {
+        width: 100%;
+        /*height: 100%;*/
+        scroll-behavior: auto;
+    }
+    
+    #rnln {
+        padding: 11px 20px;
+    }
+    
+    #rnln li {
+        display: inline-block;
+        width: 20%;
+        text-align: center;
+        color: #000;
+        font-size: 20px;
+    }
+    
+    .fullHeight {
+        height: 100%;
+    }
+    
+    .fullHeight2 {
+        height: 100%;
+    }
+    
+    .mfsInput {
+        margin: -7px 0 -7px 0;
+    }
+    .mfsBubble {border:1px solid #337ab7; border-radius:5px; padding: 5px; margin: 0 5px; text-align: center;}
+
+    
+    .companyGrid {
+        /*width: 30%;*/
+        margin: 0 0 20px 0;
+        float: left;
+        border: 3px solid #fff;
+        background-color: #f8f8f8;
+        height: 50vh;
+        padding:0px;
+    }
+    
+    .companyGrid_logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        border: 1px solid #ccc;
+        position: relative;
+        left: 50%;
+        margin: 0px 0px 30px -60px;
+        background-image: url('img/logo1.jpg');
+        background-size: contain;
+    }
+    
+    .companyGrid_mid {
+        width: 100%;
+        background-color: #363738;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+    }
+    
+    .companyGrid_info {
+        font-size: 14px;
+        font-family: 'Lato';
+        padding: 0 20px;
+    }
+    
+    .companyRow {
+        width: calc(100% - 50px);
+        float: left;
+        border: 3px solid #eee;
+        background-color: #f8f8f8;
+        margin: 20px 0 0 20px;
+        font-size: 14px;
+        font-family: 'Lato';
+    }
+    
+    .companyRow_icon {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        background-image: url('img/logo1.jpg');
+        background-size: contain;
+        float: left;
+        margin: 20px 0 0 20px;
+    }
+    
+    .companyRow_copy {
+        float: left;
+        margin: 20px 0 0 20px;
+    }
+    
+    .companyRow_right {
+        float: right;
+        font-size: 10px;
+        padding: 20px 20px 0 0;
+        text-align: center;
+        display: inline-block;
+    }
+    
+    .companyRow_bubble {
+        border: 1px solid #0074C3;
+        border-radius: 10px;
+        font-size: 30px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    .companyRow_bubble span {
+        font-size: 14px;
+        color: green;
+    }
+    
+    .companyRow_notes {
+        width: calc(100% - 80px);
+        padding: 20px;
+        margin: 20px;
+        background-color: #ddd;
+        clear: both;
+    }
+    .mfsRow { border:4px solid #eee; background-color: #efefef; padding: 10px; margin: 0 0 10px 0; }
+    .mfsRowNotes { background-color: #ccc; padding: 10px; }
+    
+    .notePadding {
+        padding: 20px;
+    }
+
+    .noteGrid {
+        width: calc(33% - 70px);
+        height: 50vh;
+        overflow: hidden;
+    }
+    .noteRow {width: calc(100% - 85px); color: #999;}
+    .noteRow i {font-size: 20px;}
+    
+    .notePadding table {
+        width: 100%;
+    }
+    
+    .notePadding i {
+        font-size: 25px;
+    }
+    
+    .notePadding td {
+        padding: 0 0 20px 0;
+    }
+    
+    .notePadding td:first-child {
+        text-align: left;
+        color: #999;
+    }
+    
+    .notePadding td:nth-child(2) {
+        text-align: right;
+        color: #999;
+    }
+    
+    .notePadding span {
+        color: #000;
+    }
+    .dashTitle { width: 90%; border-bottom: 1px solid #ccc; padding: 0 0 10px 0; text-align: left; font-size: 18px; color: #000; }
+    .dashBody { width: 90%; padding: 0 0 10px 0; text-align: left; vertical-align: text-top; font-size: 18px; font-family: "Lato"; line-height: 20px; }
+
+    .dashDate {width: 100%; margin: 0 0 20px 0; border-bottom: 1px solid #ccc; text-align: left;}
+    .dashDate div {border:1px solid #eee; color: blue; font-size: 14px; text-align: center; padding: 10px; margin: 0 20px 0 0;}
+    .dashDate span {font-size: 24px; color: blue}
+    .dashDate td {color: #666; font-size: 18px; text-align: left;}
+    .dashDate p {font-size: 14px; text-align: left;}
+    @media (max-width: 767px) {
+        /*.navLeft div { float: left; width: 25%;}*/
+        .mfsLeftnav {
+            height: 80px;
+            margin: 0 0 10px 0;
+        }
+    }
