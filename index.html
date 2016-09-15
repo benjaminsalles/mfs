@@ -1,195 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Bootstrap Training</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- custom css comes after bootstrap -->
-    <link rel="stylesheet" href="css/layout.css">
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>MFS - Prototype</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- custom css comes after bootstrap -->
+<link rel="stylesheet" href="css/layout.css">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="mfsTitle col-xs-3 col-sm-3 col-md-3 col-lg-3">TITLE</div>
-            <div class="mfsTopnav col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                <div class="row">
-                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <input type="text" class="form-control mfsInput" placeholder="Search">
-                    </div>
-                    <div class="mfsTopNavIcon col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="fa fa-user"></i></div>
-                    <div class="mfsTopNavIcon col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="fa fa-cog"></i></div>
-                </div>
-            </div>
+<body ng-app="ngRepeat" onLoad="addACCT()">
+<div class="container">
+  <div class="row">
+    <div class="mfsTitle col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="img/genentech.png"></div>
+    <div class="mfsTopnav col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="text-align:center;"> <a href=""><i class="glyphicon glyphicon-earphone"></i> <span class="badge badge-danger">3</span></a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href=""><i class="glyphicon glyphicon-calendar"></i> <span class="badge badge-danger">7</span></a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href=""><i class="glyphicon glyphicon-envelope"></i> <span class="badge badge-danger">12</span></a> 
+          <!--<div class="row" ng-controller="repeatController">
+            <input ng-model="searchBox" type="text" class="form-control mfsInput col-xs-10 col-sm-10 col-md-10 col-lg-10" placeholder="Search">
+          </div>--> 
         </div>
-        <div class="row">
-            <div id="nav2b" class="mfsTitle2 col-xs-12 col-sm-8 col-md-8 col-lg-8">dashboard</div>
-            <div id="rnln" class="mfsTopnav2 col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <ul>
-                    <li>&nbsp;</li>
-                </ul>
+        <div class="mfsTopNavIcon col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-user"></i></div>
+        <div class="mfsTopNavIcon col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-cog"></i></div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="row">
+    <div id="nav2b" class="mfsTitle2 col-xs-12 col-sm-8 col-md-8 col-lg-8"> --> 
+  <!--<div class="row" ng-controller="repeatController">
+        	<input ng-model="searchBox" type="text" class="form-control mfsInput col-xs-10 col-sm-10 col-md-10 col-lg-10" placeholder="Search">
+        </div>--> 
+  <!--  &nbsp; </div>
+    <div id="rnln" class="mfsTopnav2 col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <ul style="margin:8px 0;">
+        <li>&nbsp;</li>
+      </ul>
+    </div>
+  </div>-->
+  <div class="mfsBodycontainer row">
+    <div id="mfsLeftNavContainer" class="mfsLeftnav col-xs-12 col-sm-1 col-md-1 col-lg-1">
+      <div id="ln1" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop1" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-list-alt"></i> <br>
+        Dashboard</a>
+        <div class="collapse" id="drop1"> 
+        	<a href="javascript:showCTNT(11);" class="list-group-item"><i class="glyphicon glyphicon-list-alt btn btn-primary"></i></a></div>
+      </div>
+      <div id="ln2" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop2" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-tasks"></i> <br>
+        Accounts</a>
+        <div class="collapse" id="drop2">
+        	<a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-filter btn btn-primary"></i></a>
+            <a href="javascript:showCTNT(22);" class="list-group-item"><i class="glyphicon glyphicon-th-list btn btn-primary"></i></a>
+            <a href="javascript:showCTNT(21);" class="list-group-item"><i class="glyphicon glyphicon-th-large btn btn-primary"></i></a>
+            <a href="javascript:showCTNT(23);" class="list-group-item"><i class="glyphicon glyphicon-map-marker btn btn-primary"></i></a>
+            <a href="javascript:showCTNT(24);" class="list-group-item"><i class="glyphicon glyphicon-signal btn btn-primary"></i></a> </div>
+      </div>
+      <div id="ln3" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop3" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-file"></i> <br>
+        Notes</a>
+        <div class="collapse" id="drop3">
+        	<a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-filter btn btn-primary"></i></a> 
+            <a href="javascript:showCTNT(31);" class="list-group-item"><i class="glyphicon glyphicon-th-large btn btn-primary"></i></a> 
+            <a href="javascript:showCTNT(32);" class="list-group-item"><i class="glyphicon glyphicon-th-list btn btn-primary"></i></a> 
+            <a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-plus btn btn-primary"></i></a> </div>
+      </div>
+      <div id="ln4" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop4" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-blackboard"></i> <br>
+        Presentation</a>
+        <div class="collapse" id="drop4"> 
+            <a href="javascript:showCTNT(41);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">1</span></a> 
+            <a href="javascript:showCTNT(42);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">2</span></a> 
+            <a href="javascript:showCTNT(43);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">3</span></a> </div>
+      </div>
+      <!--<div id="ln5" class="mfsNavLeftDiv mfsNavLeftDivLAST col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);"> <i class="glyphicon glyphicon-user"></i> <br>
+        Profile<br>Settings </div>--> 
+    </div>
+    <div class="mfsBody col-xs-12 col-sm-11 col-md-11 col-lg-11">
+      <div id="content_11" class="content contentBox fullHeight"> 
+        
+        <!--START 3 COL-->
+        
+        <div class="row" style="margin-top:20px;">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 list-group"> <span class="mfsDashTitle">New Notifications</span> <a href="" class="list-group-item">
+            <h4 class="list-group-item-heading">Company A</h4>
+            <p class="list-group-item-text">New document uploaded new SOW on www.box.com</p>
+            </a> <a href="" class="list-group-item list-group-item-info">
+            <h4 class="list-group-item-heading">Company A</h4>
+            <p class="list-group-item-text">Has changed in status from <span style="color: red;">RED</span> to <span style="color:orange;">ORANGE</span></p>
+            </a> <a href="" class="list-group-item">
+            <h4 class="list-group-item-heading">Company Beta</h4>
+            <p class="list-group-item-text">Jim Smith addeda new note on Document B</p>
+            </a> <a href="" class="list-group-item">
+            <h4 class="list-group-item-heading">Company Cantrella</h4>
+            <p class="list-group-item-text">Markus Wade added a new note on Document C</p>
+            </a> </div>
+          <!--</div>--> 
+          
+          <!--NEXT 3 COL--> 
+          
+          <!--<div class="row">-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"><span class="mfsDashTitle">My Tasks</span> <br>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Map out Broadway City </label>
             </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                View New Prospects </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Contact Molly Underwood </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Map out Broadway City </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                View New Prospects </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Contact Molly Underwood </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Map out Broadway City </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                View New Prospects </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Contact Molly Underwood </label>
+            </div>
+          </div>
+          
+          <!--NEXT 3 COL-->
+          
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"><span class="mfsDashTitle">Calendar</span> <br>
+            <div class="media">
+              <div class="media-left btn btn-primary disabled" style="text-align:center;">10<br>
+                NOV</div>
+              <div class="media-body" style="padding:0 10px;">
+                <h4 class="media-heading">Meeting with chain supplier John Stevenson, Acme Company LLC</h4>
+                <p>Carlsbad, NM 7:00pm</p>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-left btn btn-primary disabled" style="text-align:center;">10<br>
+                NOV</div>
+              <div class="media-body" style="padding:0 10px;">
+                <h4 class="media-heading">Meeting with chain supplier John Stevenson, Acme Company LLC</h4>
+                <p>Carlsbad, NM 7:00pm</p>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-left btn btn-primary disabled" style="text-align:center;">10<br>
+                NOV</div>
+              <div class="media-body" style="padding:0 10px;">
+                <h4 class="media-heading">Meeting with chain supplier John Stevenson, Acme Company LLC</h4>
+                <p>Carlsbad, NM 7:00pm</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mfsBodycontainer row">
-            <div class="mfsLeftnav col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                <div id="ln1" class="mfsNavLeftDivSELECTED col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
-                    <i class="fa fa-tachometer"></i>
-                    <br>Dashboard
-                </div>
-                <div id="ln2" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
-                    <i class="fa fa-list-alt"></i>
-                    <br>Accounts
-                </div>
-                <div id="ln3" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
-                    <i class="fa fa-sticky-note-o"></i>
-                    <br>Notes
-                </div>
-                <div id="ln4" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
-                    <i class="fa fa-desktop"></i>
-                    <br>Presentation
-                </div>
-            </div>
-            <div class="mfsBody col-xs-12 col-sm-11 col-md-11 col-lg-11">
-                <div id="content_11" class="content contentBox fullHeight">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><span class="mfsDashTitle">My Tasks</span>
-                            <br>
-                            <form action="">
-                                <p>
-                                    <input type="radio" name="gender" value="male"> Map out Broadway City</p>
-                                <p>
-                                    <input type="radio" name="gender" value="female"> View New Prospects</p>
-                                <p>
-                                    <input type="radio" name="gender" value="other"> Contact Molly Underwood</p>
-                                <p>
-                                    <input type="radio" name="gender" value="male" checked> Map out Broadway City</p>
-                                <p>
-                                    <input type="radio" name="gender" value="female"> View New Prospects</p>
-                                <p>
-                                    <input type="radio" name="gender" value="other"> Contact Molly Underwood</p>
-                                <p>
-                                    <input type="radio" name="gender" value="male"> Map out Broadway City</p>
-                                <p>
-                                    <input type="radio" name="gender" value="female"> View New Prospects</p>
-                                <p>
-                                    <input type="radio" name="gender" value="other"> Contact Molly Underwood</p>
-                            </form>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><span class="mfsDashTitle">Calendar</span>
-                            <br>
-                            <table class="dashDate">
-                                <tr>
-                                    <td>
-                                        <div><span>10</span>
-                                            <br>NOV</div>
-                                    </td>
-                                    <td style="text-align: left;">Meeting with chain supplier John Stevenson, Acme Company LLC
-                                        <p>Carlsbad, NM 7:00pm</p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="dashDate">
-                                <tr>
-                                    <td>
-                                        <div><span>10</span>
-                                            <br>NOV</div>
-                                    </td>
-                                    <td style="text-align: left;">Meeting with chain supplier John Stevenson, Acme Company LLC
-                                        <p>Carlsbad, NM 7:00pm</p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="dashDate">
-                                <tr>
-                                    <td>
-                                        <div><span>10</span>
-                                            <br>NOV</div>
-                                    </td>
-                                    <td style="text-align: left;">Meeting with chain supplier John Stevenson, Acme Company LLC
-                                        <p>Carlsbad, NM 7:00pm</p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="dashDate">
-                                <tr>
-                                    <td>
-                                        <div><span>10</span>
-                                            <br>NOV</div>
-                                    </td>
-                                    <td style="text-align: left;">Meeting with chain supplier John Stevenson, Acme Company LLC
-                                        <p>Carlsbad, NM 7:00pm</p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">New Notifications</span></div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <ul>
-                                <li>Company A - New document uploaded new <a href="">SOW.com</a> on <a href="">www.box.com</a></li>
-                                <li>Company A - Has changed in status from <span style="color: red;">RED</span> to <span style="color:orange;">ORANGE</span></li>
-                                <li>Company Beta - Jim Smith addeda new note on <a href="">Document B</a></li>
-                                <li>Company Cantrella - Markus Wade added a new note on <a href="">Document C</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">Pipeline</span><br>
-                            <iframe src="http://www.bensmash.net/D3/MFS/barpie.html" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
-                        </div>
-                        <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Pipeline</div>
+        
+        <!--END 3 COL-->
+        
+        <div class="row" style="margin-top:20px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">Seasonal Pharma Sales $M (2015)</span><br>
+            <iframe src="http://www.bensmash.net/D3/MFS/barpie.html" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
+          </div>
+          <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Pipeline</div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <img src="img/chart1.jpg" />
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <img src="img/chart2.jpg" />
-                        </div> -->
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">News</span></div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Acme Company Corporation</div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Acme Company Corporation</div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Acme Company Corporation</div>
-                    </div>
-                </div>
-                <div id="content_21" class="content displayNone">
-                    <!--ACCOUNTS GRID VIEW-->
-                </div>
-                <div id="content_22" class="content displayNone">
-                    <!--ACCOUNTS ROW VIEW-->
-                </div>
-                <div id="content_23" class="content displayNone">
-                    <!-- <iframe src="https://www.google.com/maps/@37.7913152,-122.4013598,15z"></iframe> -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6093.199855891693!2d-122.40043874449276!3d37.79142708031797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sstarbucks!5e0!3m2!1sen!2sus!4v1470414107450" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-                <div id="content_24" class="content displayNone">
-                    <iframe src="http://bensmash.net/D3/MFS/" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-                <div id="content_31" class="content displayNone">
-                    <!--NOTES GRID VIEW-->
-                </div>
-                <div id="content_32" class="content displayNone">
-                    <!--NOTES LIST VIEW-->
-                </div>
-                <div id="content_41" class="content displayNone">
-                    PRESENTATION
-                    <br>dsfsdfsd
-                    <br>sfdfsdfs
-                </div>
-            </div>
+                        </div> --> 
         </div>
+        <div class="row" style="margin-top:20px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">News</span></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mfsNews">
+            <div class="row">
+              <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"> <img src="http://www.pharmatimes.com/__data/assets/image/0004/1037515/USA.jpg" class="img-rounded">
+                <p><strong>FDA OKs paediatric use of Amgen's Blincyto</strong><br>
+                  US regulators have issued an accelerated approval for use of Amgen's immunotherapy Blincyto to treat paediatric patients with a rare form of leukaemia.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mfsNews">
+            <div class="row">
+              <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"> <img src="http://www.pharmatimes.com/__data/assets/image/0005/1082570/lung_cancer.jpg" class="img-rounded">
+                <p><strong>Pfizer's Xalkori cleared for ROS1-positive lung cancer</strong><br>
+                  The European Commission has widened the scope of Pfizer's Xalkori to include the treatment of adults with ROS1-positive advanced non-small-cell lung cancer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mfsNews">
+            <div class="row">
+              <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"> <img src="http://www.pharmatimes.com/__data/assets/image/0008/1078172/decisions.jpg" class="img-rounded">
+                <p><strong>US expands use of Novartis/Genmab's Arzerra</strong><br>
+                  US regulators have expanded the approved uses of Novartis/Genmab's Arzerra so that the biologic can now be used alongside fludarabine and cyclophosphamide for the treatment of patients with relapsed chronic lymphocytic leukaemia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="content_21" class="content displayNone" ng-controller="repeatController"> 
+        <!--ACCOUNTS GRID VIEW-->
+        
+        <div ng-repeat="client in companies" class="companyGrid col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <div class="companyGrid_logo" style="background-image:url(/mfs/img/{{ client.image }}); margin-top:20px;"></div>
+          <div class="companyGrid_mid" id="companyGrid_mid{{$index + 1}}">{{ client.actual }} and {{ client.pipeline }}</div>
+          <div class="companyGrid_info">
+            <address>
+            &nbsp;<br>
+            <strong>{{ client.company }}</strong><br>
+            {{ client.address1 }}<br>
+            {{ client.address2 }}<br>
+            <span id="gridEmail{{$index + 1}}">Email <a href="">{{ client.email }}</a></span><br>
+            <span id="gridPhone{{$index + 1}}"><abbr title="Phone">P:</abbr> {{ client.phone }}</span>
+            
+            <p><a href="" class="btn btn-primary" id="contactBTN{{$index + 1}}" ng-click="showPopup(client.image, client.company)">Contact Info</a></p>
+            </address>
+          </div>
+        </div>
+        
+        <!-- ADD NEW ACCOUNT JS --> 
+        <script>
+			function addACCT () {
+				var addACCTnum = document.querySelectorAll(".companyGrid_mid");
+				//console.log(addACCTnum.length + " accounts");
+				document.getElementById("companyGrid_mid"+addACCTnum.length).innerHTML = "&nbsp;";
+				document.getElementById("gridEmail"+addACCTnum.length).innerHTML = "&nbsp;";
+				document.getElementById("gridPhone"+addACCTnum.length).innerHTML = "&nbsp;";
+				document.getElementById("contactBTN"+addACCTnum.length).innerHTML = "Add Account";
+				
+				document.getElementById("rowActual"+addACCTnum.length).setAttribute("style", "display:none;");
+				document.getElementById("rowPipeline"+addACCTnum.length).setAttribute("style", "display:none;");
+				document.getElementById("rowOpp"+addACCTnum.length).setAttribute("style", "display:none;");
+				document.getElementById("rowEmail"+addACCTnum.length).innerHTML = "&nbsp;";
+				document.getElementById("rowPhone"+addACCTnum.length).innerHTML = "&nbsp;";
+				document.getElementById("rowBTN"+addACCTnum.length).innerHTML = "Add Account";
+			}
+		</script> 
+      </div>
+      <div id="content_22" class="content displayNone" ng-controller="repeatController"> 
+        <!--ACCOUNTS ROW VIEW-->
+        
+        <div ng-repeat="client in companies | filter:q as results" class="row mfsRow">
+          <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+            <div class="companyGrid_logo" style="background-image:url(img/{{ client.image }});"></div>
+          </div>
+          <div class="col-xs-8 col-sm-8 col-md-3 col-lg-3"><strong>{{ client.company }}</strong><br>
+            {{ client.address1 }}<br>
+            {{ client.address2 }}<br>
+            <span id="rowEmail{{$index + 1}}">Email <a href="">{{ client.email }}</a></span><br>
+            <span id="rowPhone{{$index + 1}}">Phone {{ client.phone }}</span>
+            <p><a href="" class="btn btn-primary contactBtnMargin" id="rowBTN{{$index + 1}}" ng-click="showPopup(client.image, client.company)">Contact Info</a></p>
+          </div>
+          <div id="rowActual{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-default disabled mfsBubble2">Actual<br>
+            {{ client.actual }}<br>
+            <span>+15% vs. YAG</span></div>
+          <div id="rowPipeline{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-default disabled mfsBubble2">Pipeline<br>
+            {{ client.pipeline }}<br>
+            <span>+15% vs. YAG</span></div>
+          <div id="rowOpp{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-{{ client.opp2 }} disabled mfsBubble3">Opportunity<br>
+            {{ client.opp }}</div>
+          <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10 col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 mfsRowNotes">{{ client.notes }}</div>
+        </div>
+      </div>    <div id="content_23" class="content displayNone"> 
+      <!-- <iframe src="https://www.google.com/maps/@37.7913152,-122.4013598,15z"></iframe> -->
+      <!--<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6093.199855891693!2d-122.40043874449276!3d37.79142708031797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sstarbucks!5e0!3m2!1sen!2sus!4v1470414107450" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+      <iframe src="https://www.google.com/maps/d/embed?mid=1cGrdIe_Ac-Wr9lWvEawj9tD9vHc" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
-    <script src="js/jquery-3.1.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- custom js comes after bootstrap -->
-    <script src="js/layout.js"></script>
-</body>
+    <div id="content_24" class="content displayNone"> 
+      <!--<iframe src="http://bensmash.net/D3/MFS/" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+      <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+        <h3>Pharma's Solution</h3>
+        <iframe src="http://bensmash.net/mfs/d3/diverging-stacked-bar.html" width="100%" style="height:600px; border:0px;" frameborder="0" allowfullscreen>
+        </iframe>
+        <br>
+        <h3>Revenue / Profit</h3>
+        <iframe src="http://bensmash.net/mfs/d3/bullet.html" width="80%" style="height:700px; border:0px;" frameborder="0" allowfullscreen>     
+        </iframe>
+        <br>
+        <h3>Pharma Spending in $Millions</h3>
+        <iframe src="http://bensmash.net/mfs/d3/bar-hierarchy.html" width="80%" style="height:800px;" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="height:1750px;">
+        <div style="width:100%; height:100%; background-color:rgba(0,0,0,0.1);">&nbsp;</div>
+      </div>
+    </div>
 
+    <div id="content_31" class="content displayNone" ng-controller="repeatController"> 
+      <!--NOTES GRID VIEW--> 
+      
+      <!--{title:'Note Title',createdBy:'Creator Name',createdOn:'Created Date',type:'Note Type',star:'Color',note:'Note copy goes in here.'},-->
+      
+      <div ng-repeat="note in notes" class="companyGrid notePadding col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="row">
+          <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"> <strong class="mfsNotesTitle">{{ note.title }}</strong><br>
+            <strong>Created by:</strong> {{ note.createdBy }}<br>
+            <strong>Created on:</strong> {{ note.createdOn }}<br>
+            <strong>Type:</strong> {{ note.type }} </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:right;"> <i class="glyphicon glyphicon-star btn btn-{{ note.star }} disabled" style="font-size:14px;"></i> </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p></p>
+            {{ note.note }}
+            <p><a href="">Read more...</a></p>
+          </div>
+        </div>
+        
+        <!--<table>
+            <tr>
+              <td><span>{{ note.title }}</span></td>
+              <td><i class='glyphicon glyphicon-star alert-{{ note.star }}'></i></td>
+            </tr>
+            <tr>
+              <td colspan='2'><span>Created by:</span> {{ note.createdBy }}<br>
+                <span>Created on:</span> {{ note.createdOn }}<br>
+                <span>Type:</span> {{ note.type }}</td>
+            </tr>
+            <tr>
+              <td colspan='2'>{{ note.note }}</td>
+            </tr>
+          </table>--> 
+      </div>
+    </div>
+    <div id="content_32" class="content displayNone" ng-controller="repeatController"> 
+      <!--NOTES LIST VIEW-->
+      
+      <div ng-repeat="note in notes" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mfsRow">
+        <div class="row">
+          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"> <strong class="mfsNotesTitle">{{ note.title }}</strong> </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> <i class="glyphicon glyphicon-star btn btn-{{ note.star }} disabled"></i> </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <strong>Created by:</strong> {{ note.createdBy }} | <strong>Created on:</strong> {{ note.createdOn }} | <strong>Updated on:</strong> {{ note.createdOn }} | <strong>Most Recent Note:</strong> {{ note.createdOn }} | <strong>Type:</strong> {{ note.type }} </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> {{ note.note }}
+            <p><a href="">Read more...</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="content_41" class="content displayNone">
+      <iframe src="http://bensmash.net/pdf/web/viewer1.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <div id="content_42" class="content displayNone">
+      <iframe src="http://bensmash.net/pdf/web/viewer2.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    <div id="content_43" class="content displayNone">
+      <iframe src="http://bensmash.net/pdf/web/viewer3.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<style>
+.mfsPopup { position:fixed; top:0px; left:0px; width:100vw; height:100vh; background-color:rgba(0,0,0,0.36); }
+.mfsPopupBubble { margin:25vh 0 0 25vw; width:50vw; height:50vh; background-color:#fff; color:#000; border-radius:10px; padding:20px; }
+.mfsPopupCopy { padding:10px 20px; }
+</style>--> 
+<!--<script>
+function closePopup(popName) {
+	document.getElementById(popName).className = "displayNone";
+}
+function showPopup() {
+	document.getElementById("mfsPopupContact").className = "mfsPopup";
+}
+</script>-->
+<div id="mfsPopupContact" class="displayNone" onClick="closePopup(this.id);">
+  <div class="mfsPopupBubble">
+    <div class="row">
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><img id="mfsPopupBubbleLOGO" src="/mfs/img/logo5.jpg"> <span id="mfsPopupBubbleTTL">Company</span></div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:right;"> <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsPopupContact');"></i> </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-home btn btn-primary disabled"></i></div>
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
+        <p><strong>Mailing Address</strong></p>
+        <p>Jean B. E. Zorg<br>
+          3195 Zinfandel Drive<br>
+          Building G, Suite 21<br>
+          Rancho Cordova, CA<br>
+          95670</p>
+        
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-comment btn btn-primary disabled"></i></div>
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
+        <p><strong>Social</strong></p>
+        <p><i class="fa fa-facebook" aria-hidden="true"></i> <a href="">/j_zorg</a><br>
+          <i class="fa fa-twitter" aria-hidden="true"></i> <a href="">@jbez</a><br>
+          <i class="fa fa-linkedin" aria-hidden="true"></i> <a href="">/jean-babtiste-zorg</a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-envelope btn btn-primary disabled"></i></div>
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
+        <p><strong>Email</strong></p>
+        <p><a href="">j.b.zorg@zinfandel.com</a></p>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-phone-alt btn btn-primary disabled"></i></div>
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
+        <p><strong>Phone</strong></p>
+        <p>1 (408) 554-8099</p>
+      </div>
+    </div>
+    <!--<div class="row ">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:right;">
+                <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsPopupContact');"></i>
+            </div>
+        </div>--> 
+  </div>
+</div>
+<script src="js/jquery-3.1.0.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<!-- custom js comes after bootstrap --> 
+<script src="js/layout.js"></script> 
+<script src="js/mfs.js"></script>
+</body>
 </html>

@@ -1,0 +1,89 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "Arbok",
+   "children": [
+    {"name": "Sales & Marketing", "size": 9.83},
+    {"name": "Research & Development", "size": 6.58}
+   ]
+  },
+  {
+   "name": "Aspen",
+   "children": [
+    {"name": "Sales & Marketing", "size": 17.5},
+    {"name": "Research & Development", "size": 8.27}
+   ]
+  },
+  {
+   "name": "Dratini",
+   "children": [
+    {"name": "Sales & Marketing", "size": 14.6},
+    {"name": "Research & Development", "size": 9.9}
+   ]
+  },
+  {
+   "name": "Finch",
+   "children": [
+    {"name": "Sales & Marketing", "size": 11.4},
+    {"name": "Research & Development", "size": 6.6}
+   ]
+  },
+  {
+   "name": "Genesee",
+   "children": [
+    {"name": "Sales & Marketing", "size": 9},
+    {"name": "Research & Development", "size": 9.3}
+   ]
+  },
+  {
+   "name": "Global",
+   "children": [
+    {"name": "Sales & Marketing", "size": 9.1},
+    {"name": "Research & Development", "size": 6.3}
+   ]
+  },
+  {
+   "name": "Goldeen",
+   "children": [
+    {"name": "Sales & Marketing", "size": 9.5},
+    {"name": "Research & Development", "size": 7.5}
+   ]
+  },
+  {
+   "name": "Nidoran",
+   "children": [
+    {"name": "Sales & Marketing", "size": 9.9},
+    {"name": "Research & Development", "size": 5.3}
+   ]
+  },
+  {
+   "name": "Paras",
+   "children": [
+    {"name": "Sales & Marketing", "size": 7.3},
+    {"name": "Research & Development", "size": 4.3}
+   ]
+  },
+  {
+   "name": "Sandshrew",
+   "children": [
+    {"name": "Sales & Marketing", "size": 5.7},
+    {"name": "Research & Development", "size": 5.5}
+   ]
+  },
+  {
+   "name": "Spearow",
+   "children": [
+    {"name": "Sales & Marketing", "size": 4.3},
+    {"name": "Research & Development", "size": 2.9}
+   ]
+  },
+  {
+   "name": "Vulpix",
+   "children": [
+    {"name": "Sales & Marketing", "size": 5.8},
+    {"name": "Research & Development", "size": 1.8}
+   ]
+  }
+ ]
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Training</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- custom css comes after bootstrap -->
+    <link rel="stylesheet" href="css/layout.css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+
+
+<body data-ng-init="companies=[
+{company:'name',address1:'address line one',address2:'address line two',email:'name@place.com',phone:'415-123-4567',image:'www.imageurl.com/imagename.jpg',notes:'Notes in here.'},
+{company:'Spearow Industries',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo1.jpg',actual:1000000,pipeline:600000,opp:80,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Paras',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'ogo2.jpg',actual:2000000,pipeline:1500000,opp:75,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Dratini Darts',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo3.jpg',actual:800000,pipeline:725000,opp:90,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Global Learning',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo4.jpg',actual:3000000,pipeline:3000000,opp:100,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Goldeen Coast, Inc.',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo5.jpg',actual:125000,pipeline:95000,opp:68,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Genesee & Wyoming',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo6.jpg',actual:180000,pipeline:140000,opp:74,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Sandshrew Grilled Cheese & Co.',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo7.jpg',actual:500000,pipeline:100000,opp:100,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Nidoran Onix',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo8.jpg,actual:200000,pipeline:220000,opp:80,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Aspen Holdings',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo9.jpg',actual:900000,pipeline:90000,opp:60,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Finch Media',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000,email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo10.jpg',actual:8000000,pipeline:1600000,opp:38,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Vulpix Film & Audio',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo11.jpg',actual:3000000,pipeline:6000000,opp:41,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>'},
+{company:'Arbok Ekans',address1:'555 Johnsville St, Suite 3000',address2:'New York, NY 11000',email:'johndoe@gmail.com',phone:'415-222-1234',image:'logo12.jpg',actual:10000000,pipeline:7500000,opp:80,notes:'<p>Reviewed performance with SW regional head. Discussed promo plan to improve performance in Q3.</p><p>Reviewed sales agreement with client and legal team. Awaiting final legal approval.</p>}],
+
+notes=[
+{title:'Note Title',createdBy:'Creator Name',createdOn:'Created Date',type:'Note Type',star:'Color',note:'Note copy goes in here.'},
+{title:'Gothams',createdBy:'John B. Day',createdOn:'April 1, 1883',type:'Follow Up',star:'red',note:'The Giants began as the second baseball club founded by millionaire tobacconist John B. Day and veteran amateur baseball player Jim Mutrie. The Gothams, as the Giants were originally known, entered the National League in 1883, while their other club, the Metropolitans played in the American Association.'},
+{title:'Gothams 2',createdBy:'Jim Mutrie',createdOn:'April 20, 1883',type:'Follow Up',star:'green',note:'Nearly half of the original Gotham players were members of the disbanded Troy Trojans, whose place in the National League the Gothams inherited.'},
+{title:'Bridegrooms',createdBy:'John McGraw',createdOn:'January 9, 2007',type:'Follow Up',star:'green',note:'While the Metropolitans were initially the more successful club, Day and Mutrie began moving star players to the Gothams, and in 1888 the team won its first National League pennant, as well as a victory over the St. Louis Browns in a pre-modern-era World Series.'},
+{title:'Bridegrooms',createdBy:'John McGraw',createdOn:'Septemer 22, 2007',type:'Follow Up',star:'red',note:'They repeated as champions the next year with a pennant and Championship victory over the Brooklyn 'Bridegrooms'.'},
+{title:'Giants',createdBy:'John McGraw',createdOn:'August 9, 2007',type:'Follow Up',star:'yellow',note:'It is said that after one particularly satisfying victory over the Philadelphia Phillies, Mutrie (who was also the team's manager) stormed into the dressing room and exclaimed, 'My big fellows! My giants!' From then on, the club was known as the Giants.'},
+{title:'Giants',createdBy:'John McGraw',createdOn:'September 26, 2007',type:'Follow Up',star:'green',note:'The Giants' original home stadium, the Polo Grounds, dates from this early era. It was originally located north of Central Park adjacent to 5th and 6th Avenues and 110th and 112th Streets, in Harlem in upper Manhattan. After their eviction from that first incarnation of the Polo Grounds after the 1888 season, they moved further uptown to various fields they also named the Polo Grounds located between 155th and 159th Streets in Harlem and Washington Heights, playing in the Washington Heights Polo Grounds until the end of the 1957 season, when they moved to San Francisco.'},
+{title:'Giants',createdBy:'Rogers Hornsby',createdOn:'April 29, 2008',type:'Follow Up',star:'red',note:'The Giants were a powerhouse in the late 1880s, winning their first two National League Pennants and World Championships in 1888 and 1889.'},
+{title:'Giants',createdBy:'Mel Ott',createdOn:'June 15, 2015',type:'Follow Up',star:'red',note:'But nearly all of the Giants' stars jumped to the upstart Players' League, whose New York franchise was also named the Giants, in 1890. The new team even built a stadium next door to the Polo Grounds.'},
+{title:'Giants',createdBy:'Bill Terry',createdOn:'June 15, 2015',type:'Follow Up',star:'green',note:'With a decimated roster, the National League Giants finished a distant sixth. Attendance took a nosedive, and the financial strain affected Day's tobacco business as well. The Players' League dissolved after the season, and Day sold a minority interest in his NL Giants to the defunct PL Giants' principal backer, Edward Talcott.'},
+{title:'Gigantes',createdBy:'Casey Stengel',createdOn:'June 15, 2015',type:'Follow Up',star:'blue',note:'As a condition of the sale, Day had to fire Mutrie as manager. Although the Giants rebounded to third in 1891, Day was forced to sell a controlling interest to Talcott at the end of the season.'},
+{title:'Gigantes',createdBy:'Jim Thorpe',createdOn:'June 15, 2015',type:'Follow Up',star:'green',note:'Four years later, Talcott sold the Giants to Andrew Freedman, a real estate developer with ties to the Tammany Hall political machine running New York City. Freedman was one of the most detested owners in baseball history, getting into heated disputes with other owners, writers, and his own players, most famously with star pitcher Amos Rusie, author of the first Giants no-hitter.'},
+{title:'Giants',createdBy:'Ban Johnson',createdOn:'June 15, 2015',type:'Follow Up',star:'green',note:'hen Freedman offered Rusie only $2,500 to play in 1896, the disgruntled hurler sat out the entire season. Attendance fell off throughout the league without Rusie, prompting the other owners to chip in $50,000 to get him to return for 1897. Freedman hired former owner Day as manager for part of 1899.'}]">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="mfsTitle col-xs-3 col-sm-3 col-md-3 col-lg-3">TITLE</div>
+            <div class="mfsTopnav col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input type="text" class="form-control mfsInput" placeholder="Search">
+                    </div>
+                    <div class="mfsTopNavIcon col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-user"></i></div>
+                    <div class="mfsTopNavIcon col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-cog"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="nav2b" class="mfsTitle2 col-xs-12 col-sm-8 col-md-8 col-lg-8">dashboard</div>
+            <div id="rnln" class="mfsTopnav2 col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <ul style="margin:8px 0;">
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mfsBodycontainer row">
+            <div class="mfsLeftnav col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                <div id="ln1" class="mfsNavLeftDivSELECTED col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    <br>Dashboard
+                </div>
+                <div id="ln2" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
+                    <i class="glyphicon glyphicon-tasks"></i>
+                    <br>Accounts
+                </div>
+                <div id="ln3" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
+                    <i class="glyphicon glyphicon-file"></i>
+                    <br>Notes
+                </div>
+                <div id="ln4" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);">
+                    <i class="glyphicon glyphicon-blackboard"></i>
+                    <br>Presentation
+                </div>
+            </div>
+            <div class="mfsBody col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                <div id="content_11" class="content contentBox fullHeight">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><span class="mfsDashTitle">My Tasks</span>
+                            <br>
+                            
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Map out Broadway City
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                View New Prospects
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Contact Molly Underwood
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Map out Broadway City
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                View New Prospects
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Contact Molly Underwood
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Map out Broadway City
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                View New Prospects
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Contact Molly Underwood
+                              </label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><span class="mfsDashTitle">Calendar</span>
+                            <br>
+                            
+                            <div class="media">
+                            	<div class="media-left alert-info" style="text-align:center;">10<br>NOV</div>
+                                <div class="media-body" style="padding:0 10px;"><h4 class="media-heading">Meeting with chain supplier John Stevenson, Acme Company LLC</h4>
+                                        <p>Carlsbad, NM 7:00pm</p></div>
+                            </div>
+                            <div class="media">
+                            	<div class="media-left alert-info" style="text-align:center;">10<br>NOV</div>
+                                <div class="media-body" style="padding:0 10px;"><h4 class="media-heading">Meeting with chain supplier John Stevenson, Acme Company LLC</h4>
+                                        <p>Carlsbad, NM 7:00pm</p></div>
+                            </div>
+                            <div class="media">
+                            	<div class="media-left alert-info" style="text-align:center;">10<br>NOV</div>
+                                <div class="media-body" style="padding:0 10px;"><h4 class="media-heading">Meeting with chain supplier John Stevenson, Acme Company LLC</h4>
+                                        <p>Carlsbad, NM 7:00pm</p></div>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        	<span class="mfsDashTitle">New Notifications</span>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 list-group">
+                        	<a href="" class="list-group-item">
+                   				<h4 class="list-group-item-heading">Company A</h4>
+                        		<p class="list-group-item-text">New document uploaded new SOW on www.box.com</p>
+                            </a>
+                            
+                            <a href="" class="list-group-item list-group-item-info">
+                            	<h4 class="list-group-item-heading">Company A</h4>
+                                <p class="list-group-item-text">Has changed in status from <span style="color: red;">RED</span> to <span style="color:orange;">ORANGE</span></p>
+                            </a>
+                            
+                            <a href="" class="list-group-item">
+                            	<h4 class="list-group-item-heading">Company Beta</h4>
+                                <p class="list-group-item-text">Jim Smith addeda new note on Document B</p>
+                            </a>
+                            
+                            <a href="" class="list-group-item">
+                            	<h4 class="list-group-item-heading">Company Cantrella</h4>
+                                <p class="list-group-item-text">Markus Wade added a new note on Document C</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">Pipeline</span><br>
+                            <iframe src="http://www.bensmash.net/D3/MFS/barpie.html" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
+                        </div>
+                        <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Pipeline</div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <img src="img/chart1.jpg" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <img src="img/chart2.jpg" />
+                        </div> -->
+                    </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><span class="mfsDashTitle">News</span></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Acme Company Corporation</div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Acme Company Corporation</div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Acme Company Corporation</div>
+                    </div>
+                </div>
+                <div id="content_21" class="content displayNone">
+                    <!--ACCOUNTS GRID VIEW-->
+                    <!-- <div data-ng-repeat="elementName in atoms | filter:name | orderBy:'number'" id="{{ elementName.symbol }}" class="elemBox {{ elementName.category }}" style="left:{{54 * elementName.group}}px; top:{{54 * elementName.period}}px;" ng-href="{{ elementName.url }}" onclick="javascript:alert("{{ elementName.symbol }}");" >{{ elementName.number }}<br /><center><span class="elemSym">{{ elementName.symbol }}</span><br />{{ elementName.name }}</center></div> -->
+
+                    <!--{company:'name',address1:'address line one',address2:'address line two',email:'name@place.com',phone:'415-123-4567',image:'www.imageurl.com/imagename.jpg',actual:125000,pipeline:95000,opp:68,notes:'Notes in here.'},-->
+
+                    <div ng-repeat="elementName in companies | filter:name | orderBy:'name'" class='companyGrid col-xs-12 col-sm-6 col-md-4 col-lg-4'><div class='companyGrid_logo' style='background-image:url(/mfs/img/{{ elementName.image }}); margin-top:10px;'></div><div class='companyGrid_mid'>${{ elementName.actual }} and $$${{ elementName.pipeline }}</div><div class='companyGrid_info'><address>&nbsp;<br><strong>{{ elementName.company }}</strong><br>{{ elementName.address1 }}<br>{{ elementName.address2 }}<br>Email <a href=''>{{ elementName.email }}</a><br><abbr title='Phone'>P:</abbr> {{ elementName.phone }}</p><p><a href='' class='btn btn-primary'>Contact Info</a></address></div></div>
+
+                </div>
+                <div id="content_22" class="content displayNone">
+                    <!--ACCOUNTS ROW VIEW-->
+                </div>
+                <div id="content_23" class="content displayNone">
+                    <!-- <iframe src="https://www.google.com/maps/@37.7913152,-122.4013598,15z"></iframe> -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6093.199855891693!2d-122.40043874449276!3d37.79142708031797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sstarbucks!5e0!3m2!1sen!2sus!4v1470414107450" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div id="content_24" class="content displayNone">
+                    <iframe src="http://bensmash.net/D3/MFS/" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div id="content_31" class="content displayNone">
+                    <!--NOTES GRID VIEW-->
+                </div>
+                <div id="content_32" class="content displayNone">
+                    <!--NOTES LIST VIEW-->
+                </div>
+                <div id="content_41" class="content displayNone">
+                    PRESENTATION
+                    <br>dsfsdfsd
+                    <br>sfdfsdfs
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- custom js comes after bootstrap -->
+    <script src="js/layout.js"></script>
+</body>
+
+</html>
