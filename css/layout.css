@@ -1,3 +1,7 @@
+.mfsDatesButtons { font-size:12px; margin:3px 0 0 0; }
+.mfsPopListScroll { height:85%; overflow:scroll; }
+.mfsPhoneCall { background-color:#eee; border-radius:5px; margin:0 0 10px 0; padding:10px 0; }
+.mfsBadgeTop { margin-top:-3px; }
 .contactBtnMargin { margin:10px 0; }
 .badge-danger {
   background-color: #d43f3a;
@@ -141,13 +145,23 @@ background-color: #333333;
     .mfsBubble3 { margin: 0 5px; line-height:30px; }
 
     .mfsNotesTitle { font-size:22px; }
+    .noteGrid {
+        /*width: 30%;*/
+        margin: 0 0 20px 0;
+        float: left;
+        border: 3px solid #fff;
+        background-color: #f8f8f8;
+        height: 40vh;
+        padding:0px;
+        overflow: hidden;
+    }
     .companyGrid {
         /*width: 30%;*/
         margin: 0 0 20px 0;
         float: left;
         border: 3px solid #fff;
         background-color: #f8f8f8;
-        min-height: 50vh;
+        /*min-height: 50vh;*/
         padding:0px;
     }
     
@@ -237,12 +251,6 @@ background-color: #333333;
     .notePadding {
         padding: 20px;
     }
-
-    .noteGrid {
-        width: calc(33% - 70px);
-        height: 50vh;
-        overflow: hidden;
-    }
     .noteRow {width: calc(100% - 85px); color: #999;}
     .noteRow i {font-size: 20px;}
     
@@ -285,8 +293,64 @@ background-color: #333333;
 	.mfsPopup { position:fixed; top:0px; left:0px; width:100vw; height:100vh; background-color:rgba(0,0,0,0.36); }
 	.mfsPopupBubble { margin:25vh 0 0 25vw; width:50vw; height:50vh; background-color:#fff; color:#000; border-radius:10px; padding:20px; }
 	.mfsPopupBubble img { width:60px; height:60px; border-radius:50%; border:1px solid #337ab7; margin:0 10px 20px 0; }
-	.mfsPopupBubble span { font-weight:bold; font-size:18px; }
+	.mfsPopupBubble span { font-weight:bold; font-size:12px; }
 	.mfsPopupCopy { padding:10px 20px; }
+	
+	
+	
+	/**/
+	.material-switch > input[type="checkbox"] {
+    display: none;   
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative; 
+    width: 40px;  
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+	/**/
+	
+	.mfsTasksPadding { padding:0px; }
+	.mfsAcctPanel { 
+    text-align: center;
+    padding: 0 0 0 10px;
+ }
+	
 	
     @media (max-width: 767px) {
         /*.navLeft div { float: left; width: 25%;}*/
@@ -296,4 +360,5 @@ background-color: #333333;
         }
 	.mfsTitle img { width:100%; }
 	.mfsTopNavIcon { display:none; }
+	#mfsTopCenterNav { display:none; }
     }

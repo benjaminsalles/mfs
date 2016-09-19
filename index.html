@@ -12,6 +12,7 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
 </head>
@@ -19,10 +20,11 @@
 <body ng-app="ngRepeat" onLoad="addACCT()">
 <div class="container">
   <div class="row">
-    <div class="mfsTitle col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="img/genentech.png"></div>
+    <div class="mfsTitle col-xs-3 col-sm-3 col-md-3 col-lg-3"><img src="img/genLogo2.png"></div>
     <div class="mfsTopnav col-xs-9 col-sm-9 col-md-9 col-lg-9">
       <div class="row">
-        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="text-align:center;"> <a href=""><i class="glyphicon glyphicon-earphone"></i> <span class="badge badge-danger">3</span></a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href=""><i class="glyphicon glyphicon-calendar"></i> <span class="badge badge-danger">7</span></a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href=""><i class="glyphicon glyphicon-envelope"></i> <span class="badge badge-danger">12</span></a> 
+        <div id="mfsTopCenterNav" class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="text-align:center;">
+        	<a href="javascript:showPopup('mfsCallList');"><i class="glyphicon glyphicon-earphone"></i> <span class="badge badge-danger">4</span></a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:showPopup('mfsDateList');"><i class="glyphicon glyphicon-calendar"></i> <span class="badge badge-danger">7</span></a> &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:showPopup('mfsMailList');"><i class="glyphicon glyphicon-envelope"></i> <span class="badge badge-danger mfsBadgeTop">12</span></a> 
           <!--<div class="row" ng-controller="repeatController">
             <input ng-model="searchBox" type="text" class="form-control mfsInput col-xs-10 col-sm-10 col-md-10 col-lg-10" placeholder="Search">
           </div>--> 
@@ -32,6 +34,17 @@
       </div>
     </div>
   </div>
+  <!--<div id="slideTop" class="row">
+    <div id="slideTop1" class="row collapse">
+      <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-4 col-lg-offset-4"> All the call info </div>
+    </div>
+    <div id="slideTop2" class="row collapse">
+      <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-4 col-lg-offset-4"> Calendar Dates </div>
+    </div>
+    <div id="slideTop3" class="row collapse">
+      <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-4 col-lg-offset-4"> Mail? Yep, you've got mail. </div>
+    </div>
+  </div>-->
   <!--<div class="row">
     <div id="nav2b" class="mfsTitle2 col-xs-12 col-sm-8 col-md-8 col-lg-8"> --> 
   <!--<div class="row" ng-controller="repeatController">
@@ -48,32 +61,24 @@
     <div id="mfsLeftNavContainer" class="mfsLeftnav col-xs-12 col-sm-1 col-md-1 col-lg-1">
       <div id="ln1" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop1" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-list-alt"></i> <br>
         Dashboard</a>
-        <div class="collapse" id="drop1"> 
-        	<a href="javascript:showCTNT(11);" class="list-group-item"><i class="glyphicon glyphicon-list-alt btn btn-primary"></i></a></div>
+        <div class="collapse" id="drop1"><!-- 
+        	<a href="javascript:showCTNT(11);" class="list-group-item"><i class="glyphicon glyphicon-list-alt btn btn-primary"></i></a>--></div>
       </div>
       <div id="ln2" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop2" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-tasks"></i> <br>
         Accounts</a>
-        <div class="collapse" id="drop2">
-        	<a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-filter btn btn-primary"></i></a>
-            <a href="javascript:showCTNT(22);" class="list-group-item"><i class="glyphicon glyphicon-th-list btn btn-primary"></i></a>
-            <a href="javascript:showCTNT(21);" class="list-group-item"><i class="glyphicon glyphicon-th-large btn btn-primary"></i></a>
-            <a href="javascript:showCTNT(23);" class="list-group-item"><i class="glyphicon glyphicon-map-marker btn btn-primary"></i></a>
-            <a href="javascript:showCTNT(24);" class="list-group-item"><i class="glyphicon glyphicon-signal btn btn-primary"></i></a> </div>
+        <div class="collapse" id="drop2"> 
+          <!--<a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-filter btn btn-primary"></i></a>--> 
+          <a href="javascript:showCTNT(22);" class="list-group-item"><i class="glyphicon glyphicon-th-list btn btn-primary"></i></a> <a href="javascript:showCTNT(21);" class="list-group-item"><i class="glyphicon glyphicon-th-large btn btn-primary"></i></a> <a href="javascript:showCTNT(23);" class="list-group-item"><i class="glyphicon glyphicon-map-marker btn btn-primary"></i></a> <a href="javascript:showCTNT(24);" class="list-group-item"><i class="glyphicon glyphicon-signal btn btn-primary"></i></a> </div>
       </div>
       <div id="ln3" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop3" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-file"></i> <br>
         Notes</a>
-        <div class="collapse" id="drop3">
-        	<a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-filter btn btn-primary"></i></a> 
-            <a href="javascript:showCTNT(31);" class="list-group-item"><i class="glyphicon glyphicon-th-large btn btn-primary"></i></a> 
-            <a href="javascript:showCTNT(32);" class="list-group-item"><i class="glyphicon glyphicon-th-list btn btn-primary"></i></a> 
-            <a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-plus btn btn-primary"></i></a> </div>
+        <div class="collapse" id="drop3"> 
+          <!--<a href="javascript:showCTNT(0);" class="list-group-item"><i class="glyphicon glyphicon-filter btn btn-primary"></i></a> --> 
+          <a href="javascript:showCTNT(31);" class="list-group-item"><i class="glyphicon glyphicon-th-large btn btn-primary"></i></a> <a href="javascript:showCTNT(32);" class="list-group-item"><i class="glyphicon glyphicon-th-list btn btn-primary"></i></a> <a href="javascript:showPopup('mfsNoteInput');" class="list-group-item"><i class="glyphicon glyphicon-plus btn btn-primary"></i></a> </div>
       </div>
       <div id="ln4" class="mfsNavLeftDiv col-xs-3 col-md-12 col-sm-12 col-xs-12 list-group panel" onclick="javascript:ln(this.id);"> <a href="#drop4" class="list-group-item" data-toggle="collapse" data-parent="#mfsLeftNavContainer"><i class="glyphicon glyphicon-blackboard"></i> <br>
         Presentation</a>
-        <div class="collapse" id="drop4"> 
-            <a href="javascript:showCTNT(41);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">1</span></a> 
-            <a href="javascript:showCTNT(42);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">2</span></a> 
-            <a href="javascript:showCTNT(43);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">3</span></a> </div>
+        <div class="collapse" id="drop4"> <a href="javascript:showCTNT(41);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">1</span></a> <a href="javascript:showCTNT(42);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">2</span></a> <a href="javascript:showCTNT(43);" class="list-group-item"><span class="btn btn-primary mfsPresentationBTNS">3</span></a> </div>
       </div>
       <!--<div id="ln5" class="mfsNavLeftDiv mfsNavLeftDivLAST col-xs-3 col-md-12 col-sm-12 col-xs-12" onclick="javascript:ln(this.id);"> <i class="glyphicon glyphicon-user"></i> <br>
         Profile<br>Settings </div>--> 
@@ -84,7 +89,9 @@
         <!--START 3 COL-->
         
         <div class="row" style="margin-top:20px;">
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 list-group"> <span class="mfsDashTitle">New Notifications</span> <a href="" class="list-group-item">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 list-group"> <span class="mfsDashTitle">New Notifications</span>
+            <p></p>
+            <a href="" class="list-group-item">
             <h4 class="list-group-item-heading">Company A</h4>
             <p class="list-group-item-text">New document uploaded new SOW on www.box.com</p>
             </a> <a href="" class="list-group-item list-group-item-info">
@@ -102,52 +109,115 @@
           <!--NEXT 3 COL--> 
           
           <!--<div class="row">-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"><span class="mfsDashTitle">My Tasks</span> <br>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                Map out Broadway City </label>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"><span class="mfsDashTitle">My Tasks</span>
+            <p></p>
+            
+            <!-- -->
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mfsTasksPadding">
+                <div class="panel panel-default"> 
+                  <!-- Default panel contents --> 
+                  <!--<div class="panel-heading">Material Design Switch Demos</div>--> 
+                  
+                  <!-- List group -->
+                  <ul class="list-group">
+                    <!--<li class="list-group-item">
+                        Bootstrap Switch Default
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionDefault" class="label-default"></label>
+                        </div>
+                    </li>-->
+                    <li class="list-group-item"> Map out Broadway
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary1" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary1" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> View new prospects
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary2" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary2" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Call Molly Underwood
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary3" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary3" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Call Jeff Fox
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary4" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary4" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Map out Stockton
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary5" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary5" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Map out Powell
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary6" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary6" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Sync with HQ
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary7" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary7" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Map out Market
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary8" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary8" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <li class="list-group-item"> Call Nelson T.
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary9" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary9" class="label-primary"></label>
+                      </div>
+                    </li>
+                    <!--<li class="list-group-item">
+                        Bootstrap Switch Success
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionSuccess" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionSuccess" class="label-success"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Bootstrap Switch Info
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionInfo" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionInfo" class="label-info"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Bootstrap Switch Warning
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionWarning" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionWarning" class="label-warning"></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Bootstrap Switch Danger
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionDanger" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionDanger" class="label-danger"></label>
+                        </div>
+                    </li>-->
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                View New Prospects </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                Contact Molly Underwood </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                Map out Broadway City </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                View New Prospects </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                Contact Molly Underwood </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                Map out Broadway City </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                View New Prospects </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="">
-                Contact Molly Underwood </label>
-            </div>
+            
+            <!-- --> 
+            
           </div>
           
           <!--NEXT 3 COL-->
@@ -238,7 +308,6 @@
             {{ client.address2 }}<br>
             <span id="gridEmail{{$index + 1}}">Email <a href="">{{ client.email }}</a></span><br>
             <span id="gridPhone{{$index + 1}}"><abbr title="Phone">P:</abbr> {{ client.phone }}</span>
-            
             <p><a href="" class="btn btn-primary" id="contactBTN{{$index + 1}}" ng-click="showPopup(client.image, client.company)">Contact Info</a></p>
             </address>
           </div>
@@ -275,65 +344,127 @@
             {{ client.address2 }}<br>
             <span id="rowEmail{{$index + 1}}">Email <a href="">{{ client.email }}</a></span><br>
             <span id="rowPhone{{$index + 1}}">Phone {{ client.phone }}</span>
-            <p><a href="" class="btn btn-primary contactBtnMargin" id="rowBTN{{$index + 1}}" ng-click="showPopup(client.image, client.company)">Contact Info</a></p>
+            <p><a href="" class="btn btn-primary contactBtnMargin" id="rowBTN{{$index + 1}}" ng-click="showPopup(client.image, client.company, client.address1, client.address2, client.email, client.phone)">Contact Info</a></p>
           </div>
-          <div id="rowActual{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-default disabled mfsBubble2">Actual<br>
+          
+          <!---->
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+            <div class="row">
+              <div id="rowActual{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mfsAcctPanel">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Actual</h3>
+                  </div>
+                  <div class="panel-body"> {{ client.actual }} </div>
+                  <div class="panel-footer"> +15% vs. YAG </div>
+                </div>
+              </div>
+              <div id="rowPipeline{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mfsAcctPanel">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Pipeline</h3>
+                  </div>
+                  <div class="panel-body"> {{ client.pipeline }} </div>
+                  <div class="panel-footer"> +15% vs. YAG </div>
+                </div>
+              </div>
+              <div id="rowOpp{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mfsAcctPanel">
+                <div class="panel panel-{{ client.opp2 }}">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Opportunity</h3>
+                  </div>
+                  <div class="panel-body"> {{ client.opp }} </div>
+                  <div class="panel-footer"> &nbsp; </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!--<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 mfsAcctPanel">
+              <div id="rowPipeline{{$index + 1}}" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pipeline</h3>
+                </div>
+                <div class="panel-body">
+                    {{ client.pipeline }}
+                </div>
+                <div class="panel-footer">
+                    +15% vs. YAG
+                </div>
+              </div>
+          </div>
+          
+          
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 mfsAcctPanel">
+              <div id="rowOpp{{$index + 1}}" class="panel panel-{{ client.opp2 }}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Opportunity</h3>
+                </div>
+                <div class="panel-body">
+                    {{ client.opp }}
+                </div>
+                <div class="panel-footer">
+                    &nbsp;
+                </div>
+              </div>
+          </div>--> 
+          
+          <!----> 
+          
+          <!--<div id="rowActual{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-default disabled mfsBubble2">Actual<br>
             {{ client.actual }}<br>
             <span>+15% vs. YAG</span></div>
           <div id="rowPipeline{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-default disabled mfsBubble2">Pipeline<br>
             {{ client.pipeline }}<br>
             <span>+15% vs. YAG</span></div>
           <div id="rowOpp{{$index + 1}}" class="col-xs-4 col-sm-4 col-md-2 col-lg-2 btn btn-{{ client.opp2 }} disabled mfsBubble3">Opportunity<br>
-            {{ client.opp }}</div>
-          <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10 col-xs-offset-4 col-sm-offset-4 col-md-offset-2 col-lg-offset-2 mfsRowNotes">{{ client.notes }}</div>
+            {{ client.opp }}</div>-->
+          <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 mfsRowNotes">{{ client.notes }}</div>
         </div>
-      </div>    <div id="content_23" class="content displayNone"> 
-      <!-- <iframe src="https://www.google.com/maps/@37.7913152,-122.4013598,15z"></iframe> -->
-      <!--<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6093.199855891693!2d-122.40043874449276!3d37.79142708031797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sstarbucks!5e0!3m2!1sen!2sus!4v1470414107450" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>-->
-      <iframe src="https://www.google.com/maps/d/embed?mid=1cGrdIe_Ac-Wr9lWvEawj9tD9vHc" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-    <div id="content_24" class="content displayNone"> 
-      <!--<iframe src="http://bensmash.net/D3/MFS/" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>-->
-      <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
-        <h3>Pharma's Solution</h3>
-        <iframe src="http://bensmash.net/mfs/d3/diverging-stacked-bar.html" width="100%" style="height:600px; border:0px;" frameborder="0" allowfullscreen>
-        </iframe>
-        <br>
-        <h3>Revenue / Profit</h3>
-        <iframe src="http://bensmash.net/mfs/d3/bullet.html" width="80%" style="height:700px; border:0px;" frameborder="0" allowfullscreen>     
-        </iframe>
-        <br>
-        <h3>Pharma Spending in $Millions</h3>
-        <iframe src="http://bensmash.net/mfs/d3/bar-hierarchy.html" width="80%" style="height:800px;" frameborder="0" allowfullscreen>
-        </iframe>
       </div>
-      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="height:1750px;">
-        <div style="width:100%; height:100%; background-color:rgba(0,0,0,0.1);">&nbsp;</div>
+      <div id="content_23" class="content displayNone"> 
+        <!-- <iframe src="https://www.google.com/maps/@37.7913152,-122.4013598,15z"></iframe> --> 
+        <!--<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6093.199855891693!2d-122.40043874449276!3d37.79142708031797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sstarbucks!5e0!3m2!1sen!2sus!4v1470414107450" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+        <iframe src="https://www.google.com/maps/d/embed?mid=1cGrdIe_Ac-Wr9lWvEawj9tD9vHc" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
-    </div>
-
-    <div id="content_31" class="content displayNone" ng-controller="repeatController"> 
-      <!--NOTES GRID VIEW--> 
-      
-      <!--{title:'Note Title',createdBy:'Creator Name',createdOn:'Created Date',type:'Note Type',star:'Color',note:'Note copy goes in here.'},-->
-      
-      <div ng-repeat="note in notes" class="companyGrid notePadding col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <div class="row">
-          <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"> <strong class="mfsNotesTitle">{{ note.title }}</strong><br>
-            <strong>Created by:</strong> {{ note.createdBy }}<br>
-            <strong>Created on:</strong> {{ note.createdOn }}<br>
-            <strong>Type:</strong> {{ note.type }} </div>
-          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:right;"> <i class="glyphicon glyphicon-star btn btn-{{ note.star }} disabled" style="font-size:14px;"></i> </div>
+      <div id="content_24" class="content displayNone"> 
+        <!--<iframe src="http://bensmash.net/D3/MFS/" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+          <h3>Pharma's Solution</h3>
+          <iframe src="http://bensmash.net/mfs/d3/diverging-stacked-bar.html" width="100%" style="height:600px; border:0px;" frameborder="0" allowfullscreen> </iframe>
+          <br>
+          <h3>Revenue / Profit</h3>
+          <iframe src="http://bensmash.net/mfs/d3/bullet.html" width="80%" style="height:700px; border:0px;" frameborder="0" allowfullscreen> </iframe>
+          <br>
+          <h3>Pharma Spending in $Millions</h3>
+          <iframe src="http://bensmash.net/mfs/d3/bar-hierarchy.html" width="80%" style="height:800px;" frameborder="0" allowfullscreen> </iframe>
         </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p></p>
-            {{ note.note }}
-            <p><a href="">Read more...</a></p>
-          </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="height:1750px;">
+          <div style="width:100%; height:100%; background-color:rgba(0,0,0,0.1);">&nbsp;</div>
         </div>
+      </div>
+      <div id="content_31" class="content displayNone" ng-controller="repeatController"> 
+        <!--NOTES GRID VIEW--> 
         
-        <!--<table>
+        <!--{title:'Note Title',createdBy:'Creator Name',createdOn:'Created Date',type:'Note Type',star:'Color',note:'Note copy goes in here.'},-->
+        
+        <div ng-repeat="note in notes" class="noteGrid notePadding col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"> <strong class="mfsNotesTitle">{{ note.title }}</strong><br>
+              <strong>Created by:</strong> {{ note.createdBy }}<br>
+              <strong>Created on:</strong> {{ note.createdOn }}<br>
+              <strong>Type:</strong> {{ note.type }} </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:right;"> <i class="glyphicon glyphicon-star btn btn-{{ note.star }} disabled" style="font-size:14px;"></i> </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <p></p>
+              {{ note.note }}
+              <p><a href="">Read more...</a></p>
+            </div>
+          </div>
+          
+          <!--<table>
             <tr>
               <td><span>{{ note.title }}</span></td>
               <td><i class='glyphicon glyphicon-star alert-{{ note.star }}'></i></td>
@@ -347,69 +478,52 @@
               <td colspan='2'>{{ note.note }}</td>
             </tr>
           </table>--> 
+        </div>
       </div>
-    </div>
-    <div id="content_32" class="content displayNone" ng-controller="repeatController"> 
-      <!--NOTES LIST VIEW-->
-      
-      <div ng-repeat="note in notes" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mfsRow">
-        <div class="row">
-          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"> <strong class="mfsNotesTitle">{{ note.title }}</strong> </div>
-          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> <i class="glyphicon glyphicon-star btn btn-{{ note.star }} disabled"></i> </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <strong>Created by:</strong> {{ note.createdBy }} | <strong>Created on:</strong> {{ note.createdOn }} | <strong>Updated on:</strong> {{ note.createdOn }} | <strong>Most Recent Note:</strong> {{ note.createdOn }} | <strong>Type:</strong> {{ note.type }} </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> {{ note.note }}
-            <p><a href="">Read more...</a></p>
+      <div id="content_32" class="content displayNone" ng-controller="repeatController"> 
+        <!--NOTES LIST VIEW-->
+        
+        <div ng-repeat="note in notes" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mfsRow">
+          <div class="row">
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"> <strong class="mfsNotesTitle">{{ note.title }}</strong> </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> <i class="glyphicon glyphicon-star btn btn-{{ note.star }} disabled"></i> </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <strong>Created by:</strong> {{ note.createdBy }} | <strong>Created on:</strong> {{ note.createdOn }} | <strong>Updated on:</strong> {{ note.createdOn }} | <strong>Most Recent Note:</strong> {{ note.createdOn }} | <strong>Type:</strong> {{ note.type }} </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> {{ note.note }}
+              <p><a href="">Read more...</a></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="content_41" class="content displayNone">
-      <iframe src="http://bensmash.net/pdf/web/viewer1.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
-    </div>
-    <div id="content_42" class="content displayNone">
-      <iframe src="http://bensmash.net/pdf/web/viewer2.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
-    </div>
-    <div id="content_43" class="content displayNone">
-      <iframe src="http://bensmash.net/pdf/web/viewer3.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
-    </div>
+      <div id="content_41" class="content displayNone">
+        <iframe src="http://bensmash.net/pdf/web/viewer1.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
+      </div>
+      <div id="content_42" class="content displayNone">
+        <iframe src="http://bensmash.net/pdf/web/viewer2.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
+      </div>
+      <div id="content_43" class="content displayNone">
+        <iframe src="http://bensmash.net/pdf/web/viewer3.html" width="100%" style="height:100%;" frameborder="0" allowfullscreen> </iframe>
+      </div>
     </div>
   </div>
 </div>
 
-
-<!--<style>
-.mfsPopup { position:fixed; top:0px; left:0px; width:100vw; height:100vh; background-color:rgba(0,0,0,0.36); }
-.mfsPopupBubble { margin:25vh 0 0 25vw; width:50vw; height:50vh; background-color:#fff; color:#000; border-radius:10px; padding:20px; }
-.mfsPopupCopy { padding:10px 20px; }
-</style>--> 
-<!--<script>
-function closePopup(popName) {
-	document.getElementById(popName).className = "displayNone";
-}
-function showPopup() {
-	document.getElementById("mfsPopupContact").className = "mfsPopup";
-}
-</script>-->
-<div id="mfsPopupContact" class="displayNone" onClick="closePopup(this.id);">
+<!-- CONTACT POPUP -->
+<div id="mfsPopupContact" class="displayNone">
   <div class="mfsPopupBubble">
     <div class="row">
       <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><img id="mfsPopupBubbleLOGO" src="/mfs/img/logo5.jpg"> <span id="mfsPopupBubbleTTL">Company</span></div>
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:right;"> <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsPopupContact');"></i> </div>
+      <!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:right;"> <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsPopupContact');"></i> </div>--> 
     </div>
     <div class="row">
       <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-home btn btn-primary disabled"></i></div>
       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
         <p><strong>Mailing Address</strong></p>
-        <p>Jean B. E. Zorg<br>
-          3195 Zinfandel Drive<br>
-          Building G, Suite 21<br>
-          Rancho Cordova, CA<br>
-          95670</p>
-        
+        <p><i id="mfsAddy1">addy 1</i><br>
+          <i id="mfsAddy2">addy 2</i></p>
       </div>
       <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-comment btn btn-primary disabled"></i></div>
       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
@@ -423,21 +537,308 @@ function showPopup() {
       <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-envelope btn btn-primary disabled"></i></div>
       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
         <p><strong>Email</strong></p>
-        <p><a href="">j.b.zorg@zinfandel.com</a></p>
+        <p><a id="mfsEmail1" href="">j.b.zorg@zinfandel.com</a></p>
       </div>
       <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><i class="glyphicon glyphicon-phone-alt btn btn-primary disabled"></i></div>
       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mfsPopupCopy">
         <p><strong>Phone</strong></p>
-        <p>1 (408) 554-8099</p>
+        <p id="mfsPhone1">1 (408) 554-8099</p>
       </div>
+      <div class="col-xs-12" style="text-align:right;"> <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsPopupContact');"></i> </div>
     </div>
-    <!--<div class="row ">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:right;">
-                <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsPopupContact');"></i>
-            </div>
-        </div>--> 
   </div>
 </div>
+
+<!-- NOTE INPUT FORM -->
+<div id="mfsNoteInput" class="displayNone">
+  <div class="mfsPopupBubble"> 
+    <div class="form-group row">
+      <label class="col-xs-2 col-form-label">&nbsp;</label>
+      <div class="col-xs-10"> &nbsp; </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-text-input1" class="col-xs-2 col-form-label">Title</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="text" value="Note Title" id="example-text-input1">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-text-input2" class="col-xs-2 col-form-label">Note</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="text" value="Note Copy" id="example-text-input2">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-buttonType" class="col-xs-2 col-form-label">Type</label>
+      <div class="col-xs-10">
+        
+        <div class="btn-group" role="group" aria-label="...">
+          <!--<button type="button" class="btn btn-default">1</button>
+          <button type="button" class="btn btn-default">2</button>-->
+        
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Note Type
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Blue</a></li>
+              <li><a href="#">Green</a></li>
+              <li><a href="#">Yellow</a></li>
+              <li><a href="#">Red</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-datetime-local-input" class="col-xs-2 col-form-label">&nbsp;</label>
+      <div class="col-xs-5">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+      </div>
+      <div class="col-xs-5" style="text-align:right;"> <i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsNoteInput');"></i> </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALLS LIST FORM -->
+<div id="mfsCallList" class="displayNone">
+  <div class="mfsPopupBubble row">
+  	<div class="col-xs-12 mfsPopListScroll"> 
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-earphone"></i></div>
+            <div class="col-xs-5"><strong>Bruce Willis<br>415-433-2006</strong></div>
+            <div class="col-xs-5">09/13/2016 :: 4:23pm</div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-earphone"></i></div>
+            <div class="col-xs-5"><strong>Danny Aiello<br>415-665-1975</strong></div>
+            <div class="col-xs-5">09/15/2016 :: 2:01pm</div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-earphone"></i></div>
+            <div class="col-xs-5"><strong>Andie MacDowell<br>415-341-2008</strong></div>
+            <div class="col-xs-5">09/15/2016 :: 5:01pm</div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-earphone"></i></div>
+            <div class="col-xs-5"><strong>James Coburn<br>415-697-1977</strong></div>
+            <div class="col-xs-5">09/17/2016 :: 11:30am</div>
+        </div>
+    </div>  
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:right;">
+      	<i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsCallList');"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATE LIST FORM -->
+<div id="mfsDateList" class="displayNone">
+  <div class="mfsPopupBubble row">
+  	<div class="col-xs-12 mfsPopListScroll"> 
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-calendar"></i></div>
+            <div class="col-xs-5"><strong>Company A Sales Meeting</strong><br>202 Broadway, SF, CA</div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:00pm - 5:00pm
+            	<p><span class="label label-success mfsDatesButtons"><i class="glyphicon glyphicon-ok"></i></span>
+            	<span class="label label-danger mfsDatesButtons"><i class="glyphicon glyphicon-remove"></i></span></p></div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:right;">
+      	<i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsDateList');"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIL LIST FORM -->
+<div id="mfsMailList" class="displayNone">
+  <div class="mfsPopupBubble row">
+  	<div class="col-xs-12 mfsPopListScroll"> 
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        <div class="row mfsPhoneCall">
+            <div class="btn btn-primary col-xs-1 col-xs-offset-1"><i class="glyphicon glyphicon-envelope"></i></div>
+            <div class="col-xs-5">Benjamin Salles<br><strong>Company A Sales Meeting</strong><p>First line of the email goes here...</p></div>
+            <div class="col-xs-5" style="text-align:right;">09/19/2016<br>4:22pm
+            	<p><span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-trash"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-flag"></i></span>
+                <span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-fullscreen"></i></span>
+            	<span class="label label-primary mfsDatesButtons"><i class="glyphicon glyphicon-share-alt"></i></span></p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:right;">
+      	<i class="glyphicon glyphicon-remove btn btn-warning" onClick="closePopup('mfsMailList');"></i>
+      </div>
+    </div>
+  </div>
+</div>
+        
+
+
 <script src="js/jquery-3.1.0.min.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
 <!-- custom js comes after bootstrap --> 

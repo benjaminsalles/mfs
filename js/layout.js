@@ -70,3 +70,10 @@ function closePopup(popName) {
 	document.getElementById(popName).className = "displayNone";
 }
 
+function showNotePopup () {
+	document.getElementById("mfsNoteInput").className = "mfsPopup";
+}
+
+function showPopup(popName) {
+	document.getElementById(popName).className = "mfsPopup";
+}
